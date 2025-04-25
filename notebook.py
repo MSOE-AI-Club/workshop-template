@@ -5,6 +5,9 @@ import marimo
 __generated_with = "0.13.2"
 app = marimo.App(app_title="MSOE AI Club - Webscraping")
 
+@app.cell
+def _():
+    import marimo as mo
 
 @app.cell(hide_code=True)
 def _(mo):
