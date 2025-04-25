@@ -1,6 +1,7 @@
 
 
 import marimo
+import marimo as mo
 
 __generated_with = "0.13.2"
 app = marimo.App(app_title="MSOE AI Club - Webscraping")
@@ -9,7 +10,7 @@ app = marimo.App(app_title="MSOE AI Club - Webscraping")
 def _():
     import marimo as mo
 
-@app.cell(hide_code=True)
+@app.cell(hide_code=False)
 def _(mo):
     mo.md(
         r"""
@@ -44,7 +45,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell(hide_code=False)
 def _(mo):
     mo.md(
         r"""
@@ -86,7 +87,7 @@ def _():
     return html, requests
 
 
-@app.cell(hide_code=True)
+@app.cell(hide_code=False)
 def _(mo):
     mo.md(
         r"""
@@ -124,7 +125,7 @@ def _(html):
     return (soup,)
 
 
-@app.cell(hide_code=True)
+@app.cell(hide_code=False)
 def _(mo):
     mo.md(r"""Now we can use BeautifulSoup to find the "leaderboard-table" element.""")
     return
@@ -140,7 +141,7 @@ def _(soup):
     return (leaderboard_table,)
 
 
-@app.cell(hide_code=True)
+@app.cell(hide_code=False)
 def _(mo):
     mo.md(r"""Not only can Beautifulsoup find the element, it also allows us to easily extract the data.""")
     return
@@ -161,7 +162,7 @@ def _(leaderboard_table):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell(hide_code=False)
 def _(mo):
     mo.md(
         r"""
@@ -215,7 +216,7 @@ def _(html_1):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell(hide_code=False)
 def _(mo):
     mo.md(
         r"""
@@ -350,7 +351,7 @@ def _(BeautifulSoup_1, html_2):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell(hide_code=False)
 def _(mo):
     mo.md(
         r"""

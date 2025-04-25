@@ -6,6 +6,19 @@
   "cells": [
     {
       "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
       "code_hash": "91ef2d8ea7ca00b1edfd58137c72406b",
       "outputs": [
         {
@@ -18,7 +31,7 @@
       "console": []
     },
     {
-      "id": "MJUe",
+      "id": "vblA",
       "code_hash": "86d59249c93f3d8ebbca1864ba6501cc",
       "outputs": [
         {
@@ -31,12 +44,6 @@
       "console": []
     },
     {
-      "id": "vblA",
-      "code_hash": "7630bf9390abe6888965b08baa4fdd9f",
-      "outputs": [],
-      "console": []
-    },
-    {
       "id": "bkHC",
       "code_hash": "d1e406eeeaa3796d7724aefef61ab94a",
       "outputs": [],
@@ -45,14 +52,7 @@
     {
       "id": "lEQa",
       "code_hash": "2060c27dcafdcd3fa2087853513f0bc4",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">This html now contains the leaderboard for us to extract. But how do we extract it?</span>\n<span class=\"paragraph\">One easy way is to <em>inspect</em> the page on your browser, and to see if the HTML can easily identify the leaderboard. It seems that the leaderboard element is in the \"leaderboard-table\" class:</span>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">&lt;</span><span class=\"nt\">table</span> <span class=\"na\">border</span><span class=\"o\">=</span><span class=\"s\">&quot;1&quot;</span> <span class=\"na\">class</span><span class=\"o\">=</span><span class=\"s\">&quot;dataframe leaderboard-table&quot;</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;df_data&quot;</span><span class=\"p\">&gt;</span>\n    ...\n<span class=\"p\">&lt;/</span><span class=\"nt\">table</span><span class=\"p\">&gt;</span>\n</code></pre></div>\n<span class=\"paragraph\">We could try looking for \"leaderboad-table\" in the html string, but there's a better way. <code>Beautifulsoup</code> is a Python library that makes parsing HTML easy.</span></span>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -70,14 +70,7 @@
     {
       "id": "SFPL",
       "code_hash": "61bd3a3e1aed11bc2b69622de7c75251",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Now we can use BeautifulSoup to find the \"leaderboard-table\" element.</span></span>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -89,14 +82,7 @@
     {
       "id": "RGSE",
       "code_hash": "98b1a5ab5ae640bc8b23812ec7f39b45",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Not only can Beautifulsoup find the element, it also allows us to easily extract the data.</span></span>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -108,14 +94,7 @@
     {
       "id": "emfo",
       "code_hash": "ab7fb8293c64e5c57120f7bd36e632a3",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Pretty neat, right?</span>\n<span class=\"paragraph\"><span style=\"color:#ff5555;font-weight:bold;font-size:1.5rem;\">\n    STOP\n</span></span>\n<span class=\"paragraph\">... or keep going if you want to work ahead.</span>\n<hr />\n<span class=\"paragraph\"><strong>It's not always this easy.</strong></span>\n<span class=\"paragraph\">Some pages dynamically generate content using Javascript. This is a problem for us because the <code>requests</code> library cannot run Javascript code. Let's try to scrape content from a page that uses a lot of Javascript.</span>\n<ul>\n<li>Go to <a href=\"https://msoe-maic.com/library?nav=Research\" rel=\"noopener\" target=\"_blank\">the MAIC research groups page</a>.</li>\n<li>Use the element selector to select a group's section.</li>\n<li>Note the id of the element.</li>\n</ul>\n<span class=\"paragraph\">For instance, the page has this div with an id of <code>agent-simulation-experts</code>.</span>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">&lt;</span><span class=\"nt\">div</span> <span class=\"na\">class</span><span class=\"o\">=</span><span class=\"s\">&quot;MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root modal css-1kil0ip&quot;</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;agent-simulation-experts&quot;</span><span class=\"p\">&gt;</span>\n    ...\n<span class=\"p\">&lt;/</span><span class=\"nt\">div</span><span class=\"p\">&gt;</span>\n</code></pre></div>\n<span class=\"paragraph\">It's important to note, however, that this element was generated with Javascript. So what happens if we try scraping this element with <code>requests</code>?</span>\n<span class=\"paragraph\"><span style=\"color:#55ff55;font-weight:bold;font-size:1.5rem;\">\n    GO\n</span></span></span>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -133,118 +112,79 @@
     {
       "id": "iLit",
       "code_hash": "e0a82f1528ae50cb74140f0a6b657b94",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\"><span style=\"color:#5555ff;font-weight:bold;\">\n    Try this yourself.\n</span></span>\n<span class=\"paragraph\">Go to some websites and see what HTML you can scrape with <code>requests</code>. See if anything in the browser inspection tool appears in the <code>html</code> variable. You may find that a majority of websites aren't easily scrapable.</span>\n<span class=\"paragraph\">Some sites to try:\n- <a href=\"https://www.youtube.com/\" rel=\"noopener\" target=\"_blank\">https://www.youtube.com/</a>\n- <a href=\"https://www.google.com/search?q=your+search+here\" rel=\"noopener\" target=\"_blank\">https://www.google.com/search?q=your+search+here</a>\n- <a href=\"https://www.reddit.com/\" rel=\"noopener\" target=\"_blank\">https://www.reddit.com/</a>\n- <a href=\"https://stackoverflow.com/questions\" rel=\"noopener\" target=\"_blank\">https://stackoverflow.com/questions</a>\n- <a href=\"https://github.com/torvalds\" rel=\"noopener\" target=\"_blank\">https://github.com/torvalds</a></span>\n<span class=\"paragraph\"><span style=\"color:#ff5555;font-weight:bold;font-size:1.5rem;\">\n    STOP\n</span></span>\n<span class=\"paragraph\">... or keep going if you want to work ahead.</span>\n<hr />\n<span class=\"paragraph\"><strong>Q: So how do we scrape pages that use Javascript?</strong></span>\n<span class=\"paragraph\">A: Use Selenium.</span>\n<span class=\"paragraph\">Selenium is a headless browser that can execute page Javascript.</span>\n<span class=\"paragraph\">the <code>requests</code> library cannot run Javascript, so any page content generated by said Javascript is impossible to scrape with <code>requests</code> alone. Luckily, browsers are <em>made</em> to run Javascript. Selinum runs javascript like a regular browser (and it even uses a regular browser such as Chrome under the hood), but it functions without a UI so you can interact with pages programatically</span>\n<span class=\"paragraph\"><span style=\"color:#55ff55;font-weight:bold;font-size:1.5rem;\">\n    GO\n</span></span>\n<span class=\"paragraph\">We'll wrap <code>selenium</code> in a function call to make it work similarly to <code>requests</code>. Feel free to read the function comments if you want to dive deeper into <code>selenium</code>.</span></span>"
-          }
-        }
-      ],
-      "console": []
-    },
-    {
-      "id": "ZHCJ",
-      "code_hash": "8908073ff9c3457f044d601b0390a460",
       "outputs": [],
       "console": []
     },
     {
-      "id": "ROlb",
+      "id": "ZHCJ",
       "code_hash": "4f7b61162f3b8540e20703e1a0a56f76",
       "outputs": [],
       "console": []
     },
     {
-      "id": "qnkX",
+      "id": "ROlb",
       "code_hash": "9a57e26bd25dcd5e0638c93daf40432a",
       "outputs": [],
       "console": []
     },
     {
-      "id": "TqIu",
+      "id": "qnkX",
       "code_hash": "a21e422cddc3ddf8d1b2fab452fd5a98",
       "outputs": [],
       "console": []
     },
     {
-      "id": "Vxnm",
+      "id": "TqIu",
       "code_hash": "4f9804709f74949a9cf38a487cd9d59b",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\"><span style=\"color:#ff5555;font-weight:bold;font-size:1.5rem;\">\n    STOP\n</span></span>\n<span class=\"paragraph\">... or keep going if you want to work ahead.</span>\n<hr />\n<span class=\"paragraph\"><strong>Using LLMs to summarize scraped data.</strong></span>\n<span class=\"paragraph\">If you're scraping unstructured data, then LLMs are a must. Although there is structure in the HTML elements, it can often be easier to ask an LLM to structure the output for you.</span>\n<span class=\"paragraph\">Let's structure the output of a page listing refurbished iPhones for sale.</span>\n<span class=\"paragraph\">You will need Gemini API keys to run this example. <a href=\"https://aistudio.google.com/\" rel=\"noopener\" target=\"_blank\">Link to Gemini API</a></span>\n<span class=\"paragraph\"><span style=\"color:#55ff55;font-weight:bold;font-size:1.5rem;\">\n    GO\n</span></span>\n<span class=\"paragraph\">This example will:\n- Use Selenium to scrape for refurbished iPhones.\n- Use an LLM to summarize the results into a structured format.</span></span>"
-          }
-        }
-      ],
-      "console": []
-    },
-    {
-      "id": "DnEU",
-      "code_hash": "41a6501c30193d28410767b8a805078e",
       "outputs": [],
       "console": []
     },
     {
-      "id": "ulZA",
+      "id": "Vxnm",
       "code_hash": "0e0779100fa61bf9b47b4df73c39e146",
       "outputs": [],
       "console": []
     },
     {
-      "id": "ecfG",
+      "id": "DnEU",
       "code_hash": "b043252cd6375d614626a32637cc4d15",
       "outputs": [],
       "console": []
     },
     {
-      "id": "Pvdt",
+      "id": "ulZA",
       "code_hash": "ace3c316e6c03c8924532ea91c843b4c",
       "outputs": [],
       "console": []
     },
     {
-      "id": "ZBYS",
+      "id": "ecfG",
       "code_hash": "18c30e28e194e50e6b51b635b5725e17",
       "outputs": [],
       "console": []
     },
     {
-      "id": "aLJB",
+      "id": "Pvdt",
       "code_hash": "40575d16387a8df7e309dc9a123dbc47",
       "outputs": [],
       "console": []
     },
     {
-      "id": "nHfw",
+      "id": "ZBYS",
       "code_hash": "f75b9f53fde00283406c0859bfb9e705",
       "outputs": [],
       "console": []
     },
     {
-      "id": "xXTn",
+      "id": "aLJB",
       "code_hash": "4bf37ae8b24926b7089b7970481084b6",
       "outputs": [],
       "console": []
     },
     {
-      "id": "AjVT",
+      "id": "nHfw",
       "code_hash": "1ac9580658d2a1abe5d8eff2a7cb6995",
       "outputs": [],
-      "console": []
-    },
-    {
-      "id": "pHFh",
-      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
       "console": []
     }
   ]
