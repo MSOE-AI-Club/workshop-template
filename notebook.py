@@ -23,11 +23,9 @@ def _(mo):
         ```
         (Rosie is not needed!)
 
-        Prereqs:
-        - Install [VSCode](https://code.visualstudio.com/)
-        - Install [Python](https://www.python.org/downloads/)
-          - "The best language" - Guido van Rossum
-        - Ensure you can run notebooks in VSCode.
+        **Prereqs [IMPORTANT!]:**
+        - Install Requests in the "Manage Packages" tab.
+        - Install Pydantic-AI in the "Manage Packages" tab.
 
         <span style="color:#ff5555;font-weight:bold;font-size:1.5rem;">
             STOP
@@ -74,12 +72,6 @@ def _(mo):
 
 @app.cell
 def _():
-    # '%pip install requests' command supported automatically in marimo
-    return
-
-
-@app.cell
-def _():
     import requests
 
     URL = 'https://msoe-maic.com'
@@ -107,15 +99,6 @@ def _(mo):
         """
     )
     return
-
-
-app._unparsable_cell(
-    r"""
-    # Install BeautifulSoup and possibly restart your notebook, being sure to re-run prior cells.
-    %pip install beautifulsoup4
-    """,
-    name="_"
-)
 
 
 @app.cell
@@ -263,12 +246,6 @@ def _(mo):
 
 
 @app.cell
-def _():
-    # '%pip install selenium\n%pip install webdriver-manager' command supported automatically in marimo
-    return
-
-
-@app.cell
 def _(BeautifulSoup_1):
     from selenium import webdriver
     from selenium.webdriver.chrome.service import Service as ChromeService
@@ -389,15 +366,6 @@ def _(mo):
         """
     )
     return
-
-
-app._unparsable_cell(
-    r"""
-    # \"You're doing great kid\" - Linus Torvalds
-    %pip install pydantic pydantic-ai pandas
-    """,
-    name="_"
-)
 
 
 @app.cell
