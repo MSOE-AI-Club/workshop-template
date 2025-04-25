@@ -24,8 +24,8 @@ def _(mo):
         (Rosie is not needed!)
 
         **Prereqs [IMPORTANT!]:**
-        - Install Requests in the "Manage Packages" tab (remove the original `requests` package first).
-        - Install Pydantic-AI in the "Manage Packages" tab.
+        1. Remove the `requests` and `typing-extensions` packages from the "Manage Packages" tab.
+        2. Install the `pydantic-ai` package (will install with updated versions of the other packages).
 
         <span style="color:#ff5555;font-weight:bold;font-size:1.5rem;">
             STOP
