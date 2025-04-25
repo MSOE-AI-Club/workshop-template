@@ -1,16 +1,12 @@
 
 
 import marimo
-import marimo as mo
 
 __generated_with = "0.13.2"
-app = marimo.App(app_title="MSOE AI Club - Webscraping")
+app = marimo.App()
+
 
 @app.cell
-def _():
-    import marimo as mo
-
-@app.cell(hide_code=False)
 def _(mo):
     mo.md(
         r"""
@@ -45,7 +41,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=False)
+@app.cell
 def _(mo):
     mo.md(
         r"""
@@ -78,6 +74,12 @@ def _(mo):
 
 @app.cell
 def _():
+    # '%pip install requests' command supported automatically in marimo
+    return
+
+
+@app.cell
+def _():
     import requests
 
     URL = 'https://msoe-maic.com'
@@ -87,7 +89,7 @@ def _():
     return html, requests
 
 
-@app.cell(hide_code=False)
+@app.cell
 def _(mo):
     mo.md(
         r"""
@@ -125,7 +127,7 @@ def _(html):
     return (soup,)
 
 
-@app.cell(hide_code=False)
+@app.cell
 def _(mo):
     mo.md(r"""Now we can use BeautifulSoup to find the "leaderboard-table" element.""")
     return
@@ -141,7 +143,7 @@ def _(soup):
     return (leaderboard_table,)
 
 
-@app.cell(hide_code=False)
+@app.cell
 def _(mo):
     mo.md(r"""Not only can Beautifulsoup find the element, it also allows us to easily extract the data.""")
     return
@@ -162,7 +164,7 @@ def _(leaderboard_table):
     return
 
 
-@app.cell(hide_code=False)
+@app.cell
 def _(mo):
     mo.md(
         r"""
@@ -216,7 +218,7 @@ def _(html_1):
     return
 
 
-@app.cell(hide_code=False)
+@app.cell
 def _(mo):
     mo.md(
         r"""
@@ -257,6 +259,12 @@ def _(mo):
         We'll wrap `selenium` in a function call to make it work similarly to `requests`. Feel free to read the function comments if you want to dive deeper into `selenium`.
         """
     )
+    return
+
+
+@app.cell
+def _():
+    # '%pip install selenium\n%pip install webdriver-manager' command supported automatically in marimo
     return
 
 
@@ -351,7 +359,7 @@ def _(BeautifulSoup_1, html_2):
     return
 
 
-@app.cell(hide_code=False)
+@app.cell
 def _(mo):
     mo.md(
         r"""
@@ -381,6 +389,15 @@ def _(mo):
         """
     )
     return
+
+
+app._unparsable_cell(
+    r"""
+    # \"You're doing great kid\" - Linus Torvalds
+    %pip install pydantic pydantic-ai pandas
+    """,
+    name="_"
+)
 
 
 @app.cell
@@ -461,6 +478,12 @@ def _(result):
 def _(driver):
     driver.quit() # Always remember to close the webdriver when you're done with it
     return
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 if __name__ == "__main__":

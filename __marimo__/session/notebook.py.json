@@ -6,41 +6,20 @@
   "cells": [
     {
       "id": "Hbol",
-      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "code_hash": "91ef2d8ea7ca00b1edfd58137c72406b",
+      "outputs": [],
       "console": []
     },
     {
       "id": "MJUe",
-      "code_hash": "91ef2d8ea7ca00b1edfd58137c72406b",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h1 id=\"webscraping\">Webscraping</h1>\n<span class=\"paragraph\">MAIC - Spring, Week 3<br>\n<div class=\"codehilite\"><pre><span></span><code>  _____________\n /0   /     \\  \\\n/  \\ M A I C/  /\\\n\\ / *      /  / /\n \\___\\____/  @ /\n          \\_/_/\n</code></pre></div>\n(Rosie is not needed!)</span>\n<span class=\"paragraph\">Prereqs:\n- Install <a href=\"https://code.visualstudio.com/\" rel=\"noopener\" target=\"_blank\">VSCode</a>\n- Install <a href=\"https://www.python.org/downloads/\" rel=\"noopener\" target=\"_blank\">Python</a>\n  - \"The best language\" - Guido van Rossum\n- Ensure you can run notebooks in VSCode.</span>\n<span class=\"paragraph\"><span style=\"color:#ff5555;font-weight:bold;font-size:1.5rem;\">\n    STOP\n</span></span>\n<span class=\"paragraph\">... or keep going if you want to work ahead.</span>\n<hr /></span>"
-          }
-        }
-      ],
+      "code_hash": "86d59249c93f3d8ebbca1864ba6501cc",
+      "outputs": [],
       "console": []
     },
     {
       "id": "vblA",
-      "code_hash": "86d59249c93f3d8ebbca1864ba6501cc",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\"><strong>What is webscraping?</strong></span>\n<span class=\"paragraph\">Are you in need of data? Maybe you want to analyze some data for insights. Or maybe you just want to train a model. In any case, you may be able to get the data you need via webscraping!</span>\n<span class=\"paragraph\">Webscraping is the process of <em>automatically</em> extracting data from websites. You can manually extract website data on your browser via \"inspect,\" but automating this process is ideal if you need anything more than a few samples.</span>\n<ul>\n<li>Go to any website (for instance, the <a href=\"https://msoe-maic.com/\" rel=\"noopener\" target=\"_blank\">MAIC</a> site).</li>\n<li>Right-click anywhere on the page. Select the \"inspect\" option or something labeled similarly. This is usually at the bottom of the pop-up menu.</li>\n<li>Note the window that opened. It contains the raw HTML (and possibly JS/CSS) site data. This is what we want to scrape automatically.</li>\n<li>Use the element selector at the top left of the inspect window to see the HTML of specific elements.</li>\n</ul>\n<hr />\n<span class=\"paragraph\"><span style=\"color:#55ff55;font-weight:bold;font-size:1.5rem;\">\n    GO\n</span></span>\n<span class=\"paragraph\"><strong>That's cool. How can I scrape automatically?</strong></span>\n<span class=\"paragraph\">Let's try scraping the MAIC leaderboard!</span>\n<span class=\"paragraph\">Basic scraping only needs the <code>requests</code> library.</span></span>"
-          }
-        }
-      ],
+      "code_hash": "7630bf9390abe6888965b08baa4fdd9f",
+      "outputs": [],
       "console": []
     },
     {
@@ -117,73 +96,91 @@
     },
     {
       "id": "ZHCJ",
-      "code_hash": "4f7b61162f3b8540e20703e1a0a56f76",
+      "code_hash": "8908073ff9c3457f044d601b0390a460",
       "outputs": [],
       "console": []
     },
     {
       "id": "ROlb",
-      "code_hash": "9a57e26bd25dcd5e0638c93daf40432a",
+      "code_hash": "4f7b61162f3b8540e20703e1a0a56f76",
       "outputs": [],
       "console": []
     },
     {
       "id": "qnkX",
-      "code_hash": "a21e422cddc3ddf8d1b2fab452fd5a98",
+      "code_hash": "9a57e26bd25dcd5e0638c93daf40432a",
       "outputs": [],
       "console": []
     },
     {
       "id": "TqIu",
-      "code_hash": "4f9804709f74949a9cf38a487cd9d59b",
+      "code_hash": "a21e422cddc3ddf8d1b2fab452fd5a98",
       "outputs": [],
       "console": []
     },
     {
       "id": "Vxnm",
-      "code_hash": "0e0779100fa61bf9b47b4df73c39e146",
+      "code_hash": "4f9804709f74949a9cf38a487cd9d59b",
       "outputs": [],
       "console": []
     },
     {
       "id": "DnEU",
-      "code_hash": "b043252cd6375d614626a32637cc4d15",
+      "code_hash": "41a6501c30193d28410767b8a805078e",
       "outputs": [],
       "console": []
     },
     {
       "id": "ulZA",
-      "code_hash": "ace3c316e6c03c8924532ea91c843b4c",
+      "code_hash": "0e0779100fa61bf9b47b4df73c39e146",
       "outputs": [],
       "console": []
     },
     {
       "id": "ecfG",
-      "code_hash": "18c30e28e194e50e6b51b635b5725e17",
+      "code_hash": "b043252cd6375d614626a32637cc4d15",
       "outputs": [],
       "console": []
     },
     {
       "id": "Pvdt",
-      "code_hash": "40575d16387a8df7e309dc9a123dbc47",
+      "code_hash": "ace3c316e6c03c8924532ea91c843b4c",
       "outputs": [],
       "console": []
     },
     {
       "id": "ZBYS",
-      "code_hash": "f75b9f53fde00283406c0859bfb9e705",
+      "code_hash": "18c30e28e194e50e6b51b635b5725e17",
       "outputs": [],
       "console": []
     },
     {
       "id": "aLJB",
-      "code_hash": "4bf37ae8b24926b7089b7970481084b6",
+      "code_hash": "40575d16387a8df7e309dc9a123dbc47",
       "outputs": [],
       "console": []
     },
     {
       "id": "nHfw",
+      "code_hash": "f75b9f53fde00283406c0859bfb9e705",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "4bf37ae8b24926b7089b7970481084b6",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "AjVT",
       "code_hash": "1ac9580658d2a1abe5d8eff2a7cb6995",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
       "outputs": [],
       "console": []
     }
