@@ -1,10 +1,17 @@
-
+# /// script
+# [tool.marimo.display]
+# theme = "dark"
+# ///
 
 import marimo
 
 __generated_with = "0.13.2"
 app = marimo.App()
 
+@app.cell
+def _():
+    import marimo as mo # Run me before anything else!
+    return (mo,)
 
 @app.cell
 def _(mo):
@@ -446,12 +453,6 @@ def _(result):
 def _(driver):
     driver.quit() # Always remember to close the webdriver when you're done with it
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-    return (mo,)
 
 
 if __name__ == "__main__":

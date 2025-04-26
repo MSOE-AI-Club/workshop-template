@@ -1,0 +1,370 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.13.2"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "c5df5b7b22481db571f5166029300c79",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h1 id=\"webscraping\">Webscraping</h1>\n<span class=\"paragraph\">MAIC - Spring, Week 3<br>\n<div class=\"codehilite\"><pre><span></span><code>  _____________\n /0   /     \\  \\\n/  \\ M A I C/  /\\\n\\ / *      /  / /\n \\___\\____/  @ /\n          \\_/_/\n</code></pre></div>\n(Rosie is not needed!)</span>\n<span class=\"paragraph\"><strong>Prereqs [IMPORTANT!]:</strong>\n1. Remove the <code>requests</code> and <code>typing-extensions</code> packages from the \"Manage Packages\" tab.\n2. Install the <code>pydantic-ai</code> package (will install with updated versions of the other packages).</span>\n<span class=\"paragraph\"><span style=\"color:#ff5555;font-weight:bold;font-size:1.5rem;\">\n    STOP\n</span></span>\n<span class=\"paragraph\">... or keep going if you want to work ahead.</span>\n<hr /></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "86d59249c93f3d8ebbca1864ba6501cc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\"><strong>What is webscraping?</strong></span>\n<span class=\"paragraph\">Are you in need of data? Maybe you want to analyze some data for insights. Or maybe you just want to train a model. In any case, you may be able to get the data you need via webscraping!</span>\n<span class=\"paragraph\">Webscraping is the process of <em>automatically</em> extracting data from websites. You can manually extract website data on your browser via \"inspect,\" but automating this process is ideal if you need anything more than a few samples.</span>\n<ul>\n<li>Go to any website (for instance, the <a href=\"https://msoe-maic.com/\" rel=\"noopener\" target=\"_blank\">MAIC</a> site).</li>\n<li>Right-click anywhere on the page. Select the \"inspect\" option or something labeled similarly. This is usually at the bottom of the pop-up menu.</li>\n<li>Note the window that opened. It contains the raw HTML (and possibly JS/CSS) site data. This is what we want to scrape automatically.</li>\n<li>Use the element selector at the top left of the inspect window to see the HTML of specific elements.</li>\n</ul>\n<hr />\n<span class=\"paragraph\"><span style=\"color:#55ff55;font-weight:bold;font-size:1.5rem;\">\n    GO\n</span></span>\n<span class=\"paragraph\"><strong>That's cool. How can I scrape automatically?</strong></span>\n<span class=\"paragraph\">Let's try scraping the MAIC leaderboard!</span>\n<span class=\"paragraph\">Basic scraping only needs the <code>requests</code> library.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "d1e406eeeaa3796d7724aefef61ab94a",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "No module named 'requests'",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\Adam\\.virtualenvs\\workshop-template-ZNp3WXf6\\Lib\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">141</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"n\">exec</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\Adam\\AppData\\Local\\Temp\\marimo_81448\\__marimo__cell_vblA_.py&quot;</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">import</span><span class=\"w\"> </span><span class=\"nn\">requests</span>\n<span class=\"gr\">ModuleNotFoundError</span>: <span class=\"n\">No module named &#39;requests&#39;</span>\n</pre></div>\n</span>"
+        }
+      ]
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "2060c27dcafdcd3fa2087853513f0bc4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">This html now contains the leaderboard for us to extract. But how do we extract it?</span>\n<span class=\"paragraph\">One easy way is to <em>inspect</em> the page on your browser, and to see if the HTML can easily identify the leaderboard. It seems that the leaderboard element is in the \"leaderboard-table\" class:</span>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">&lt;</span><span class=\"nt\">table</span> <span class=\"na\">border</span><span class=\"o\">=</span><span class=\"s\">&quot;1&quot;</span> <span class=\"na\">class</span><span class=\"o\">=</span><span class=\"s\">&quot;dataframe leaderboard-table&quot;</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;df_data&quot;</span><span class=\"p\">&gt;</span>\n    ...\n<span class=\"p\">&lt;/</span><span class=\"nt\">table</span><span class=\"p\">&gt;</span>\n</code></pre></div>\n<span class=\"paragraph\">We could try looking for \"leaderboad-table\" in the html string, but there's a better way. <code>Beautifulsoup</code> is a Python library that makes parsing HTML easy.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "1936b6f25414f4fd509b1041021a6eff",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'BeautifulSoup' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "61bd3a3e1aed11bc2b69622de7c75251",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Now we can use BeautifulSoup to find the \"leaderboard-table\" element.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "9173ead7c1e697a96f4adc06937e788d",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "98b1a5ab5ae640bc8b23812ec7f39b45",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Not only can Beautifulsoup find the element, it also allows us to easily extract the data.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "6c28c2168826973fc9171037f08b57c7",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "ab7fb8293c64e5c57120f7bd36e632a3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Pretty neat, right?</span>\n<span class=\"paragraph\"><span style=\"color:#ff5555;font-weight:bold;font-size:1.5rem;\">\n    STOP\n</span></span>\n<span class=\"paragraph\">... or keep going if you want to work ahead.</span>\n<hr />\n<span class=\"paragraph\"><strong>It's not always this easy.</strong></span>\n<span class=\"paragraph\">Some pages dynamically generate content using Javascript. This is a problem for us because the <code>requests</code> library cannot run Javascript code. Let's try to scrape content from a page that uses a lot of Javascript.</span>\n<ul>\n<li>Go to <a href=\"https://msoe-maic.com/library?nav=Research\" rel=\"noopener\" target=\"_blank\">the MAIC research groups page</a>.</li>\n<li>Use the element selector to select a group's section.</li>\n<li>Note the id of the element.</li>\n</ul>\n<span class=\"paragraph\">For instance, the page has this div with an id of <code>agent-simulation-experts</code>.</span>\n<div class=\"codehilite\"><pre><span></span><code><span class=\"p\">&lt;</span><span class=\"nt\">div</span> <span class=\"na\">class</span><span class=\"o\">=</span><span class=\"s\">&quot;MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root modal css-1kil0ip&quot;</span> <span class=\"na\">id</span><span class=\"o\">=</span><span class=\"s\">&quot;agent-simulation-experts&quot;</span><span class=\"p\">&gt;</span>\n    ...\n<span class=\"p\">&lt;/</span><span class=\"nt\">div</span><span class=\"p\">&gt;</span>\n</code></pre></div>\n<span class=\"paragraph\">It's important to note, however, that this element was generated with Javascript. So what happens if we try scraping this element with <code>requests</code>?</span>\n<span class=\"paragraph\"><span style=\"color:#55ff55;font-weight:bold;font-size:1.5rem;\">\n    GO\n</span></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "b1a326849e24d97dcfbc39c8e1ca9120",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "ed6b110df39bb1497604959039d714ab",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "e0a82f1528ae50cb74140f0a6b657b94",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\"><span style=\"color:#5555ff;font-weight:bold;\">\n    Try this yourself.\n</span></span>\n<span class=\"paragraph\">Go to some websites and see what HTML you can scrape with <code>requests</code>. See if anything in the browser inspection tool appears in the <code>html</code> variable. You may find that a majority of websites aren't easily scrapable.</span>\n<span class=\"paragraph\">Some sites to try:\n- <a href=\"https://www.youtube.com/\" rel=\"noopener\" target=\"_blank\">https://www.youtube.com/</a>\n- <a href=\"https://www.google.com/search?q=your+search+here\" rel=\"noopener\" target=\"_blank\">https://www.google.com/search?q=your+search+here</a>\n- <a href=\"https://www.reddit.com/\" rel=\"noopener\" target=\"_blank\">https://www.reddit.com/</a>\n- <a href=\"https://stackoverflow.com/questions\" rel=\"noopener\" target=\"_blank\">https://stackoverflow.com/questions</a>\n- <a href=\"https://github.com/torvalds\" rel=\"noopener\" target=\"_blank\">https://github.com/torvalds</a></span>\n<span class=\"paragraph\"><span style=\"color:#ff5555;font-weight:bold;font-size:1.5rem;\">\n    STOP\n</span></span>\n<span class=\"paragraph\">... or keep going if you want to work ahead.</span>\n<hr />\n<span class=\"paragraph\"><strong>Q: So how do we scrape pages that use Javascript?</strong></span>\n<span class=\"paragraph\">A: Use Selenium.</span>\n<span class=\"paragraph\">Selenium is a headless browser that can execute page Javascript.</span>\n<span class=\"paragraph\">the <code>requests</code> library cannot run Javascript, so any page content generated by said Javascript is impossible to scrape with <code>requests</code> alone. Luckily, browsers are <em>made</em> to run Javascript. Selinum runs javascript like a regular browser (and it even uses a regular browser such as Chrome under the hood), but it functions without a UI so you can interact with pages programatically</span>\n<span class=\"paragraph\"><span style=\"color:#55ff55;font-weight:bold;font-size:1.5rem;\">\n    GO\n</span></span>\n<span class=\"paragraph\">We'll wrap <code>selenium</code> in a function call to make it work similarly to <code>requests</code>. Feel free to read the function comments if you want to dive deeper into <code>selenium</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "4f7b61162f3b8540e20703e1a0a56f76",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'BeautifulSoup' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "9a57e26bd25dcd5e0638c93daf40432a",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "marimo came across the undefined variable `get_page_content` during runtime. Definition expected in cell : ",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\Adam\\.virtualenvs\\workshop-template-ZNp3WXf6\\Lib\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">141</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"n\">exec</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\Adam\\AppData\\Local\\Temp\\marimo_81448\\__marimo__cell_iLit_.py&quot;</span>, line <span class=\"m\">2</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"p\">(</span><span class=\"n\">html_2</span><span class=\"p\">,</span> <span class=\"n\">_</span><span class=\"p\">)</span> <span class=\"o\">=</span> <span class=\"n\">get_page_content</span><span class=\"p\">(</span><span class=\"n\">URL_2</span><span class=\"p\">)</span>\n<span class=\"w\">                  </span><span class=\"pm\">^^^^^^^^^^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name &#39;get_page_content&#39; is not defined</span>\n</pre></div>\n</span>"
+        }
+      ]
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "a21e422cddc3ddf8d1b2fab452fd5a98",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (MarimoExceptionRaisedError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "4f9804709f74949a9cf38a487cd9d59b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\"><span style=\"color:#ff5555;font-weight:bold;font-size:1.5rem;\">\n    STOP\n</span></span>\n<span class=\"paragraph\">... or keep going if you want to work ahead.</span>\n<hr />\n<span class=\"paragraph\"><strong>Using LLMs to summarize scraped data.</strong></span>\n<span class=\"paragraph\">If you're scraping unstructured data, then LLMs are a must. Although there is structure in the HTML elements, it can often be easier to ask an LLM to structure the output for you.</span>\n<span class=\"paragraph\">Let's structure the output of a page listing refurbished iPhones for sale.</span>\n<span class=\"paragraph\">You will need Gemini API keys to run this example. <a href=\"https://aistudio.google.com/\" rel=\"noopener\" target=\"_blank\">Link to Gemini API</a></span>\n<span class=\"paragraph\"><span style=\"color:#55ff55;font-weight:bold;font-size:1.5rem;\">\n    GO\n</span></span>\n<span class=\"paragraph\">This example will:\n- Use Selenium to scrape for refurbished iPhones.\n- Use an LLM to summarize the results into a structured format.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "0e0779100fa61bf9b47b4df73c39e146",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "No module named 'pydantic_ai'",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\Adam\\.virtualenvs\\workshop-template-ZNp3WXf6\\Lib\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">141</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"n\">exec</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\Adam\\AppData\\Local\\Temp\\marimo_81448\\__marimo__cell_qnkX_.py&quot;</span>, line <span class=\"m\">2</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">pydantic_ai</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">Agent</span>\n<span class=\"gr\">ModuleNotFoundError</span>: <span class=\"n\">No module named &#39;pydantic_ai&#39;</span>\n</pre></div>\n</span>"
+        }
+      ]
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "b043252cd6375d614626a32637cc4d15",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "ace3c316e6c03c8924532ea91c843b4c",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "18c30e28e194e50e6b51b635b5725e17",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "40575d16387a8df7e309dc9a123dbc47",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "f75b9f53fde00283406c0859bfb9e705",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "4bf37ae8b24926b7089b7970481084b6",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (ModuleNotFoundError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "1ac9580658d2a1abe5d8eff2a7cb6995",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "marimo came across the undefined variable `driver` during runtime. Definition expected in cell : ",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\Adam\\.virtualenvs\\workshop-template-ZNp3WXf6\\Lib\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">142</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"nb\">eval</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">last_expr</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n<span class=\"w\">           </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\Adam\\AppData\\Local\\Temp\\marimo_81448\\__marimo__cell_ZBYS_.py&quot;</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">driver</span><span class=\"o\">.</span><span class=\"n\">quit</span><span class=\"p\">()</span> <span class=\"c1\"># Always remember to close the webdriver when you&#39;re done with it</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name &#39;driver&#39; is not defined</span>\n</pre></div>\n</span>"
+        }
+      ]
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}

@@ -13,4 +13,5 @@ python_version = "3.11"
 
 [scripts]
 marimo = "marimo edit"
-export = "marimo export html-wasm notebook.py -o . --mode edit"
+export = "export.sh"
+host = "python -m http.server"
